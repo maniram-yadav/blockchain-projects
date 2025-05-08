@@ -41,6 +41,7 @@ describe("voting", () => {
       [Buffer.from("poll"),pollIdBuffer],
       program.programId
     );
+
     const smoothTx = await program.methods.initializeCandidate(
       new anchor.BN(1),
       "smooth",
@@ -48,6 +49,7 @@ describe("voting", () => {
       pollAccount:pollAddress
     })
     .rpc();
+
     const crunchyTx = await program.methods.initializeCandidate(
       new anchor.BN(1),
       "crunchy",
@@ -55,9 +57,19 @@ describe("voting", () => {
       pollAccount:pollAddress
     })
     .rpc();
+
     console.log("Your transaction complete",smoothTx);
     console.log("Your transaction complete",crunchyTx);
     
-  }
+  });
 
+  it('vote', async () => {
+    const tx = await program.methods.vote(
+      new anchor.BN(1),
+      "smooth",
+    )
+    .rpc();
+    console.log("You transaction signature ",tx);  
+  });
+  
 });
