@@ -1,0 +1,12 @@
+.anchor
+.DS_Store
+**/node_modules
+**/**/**/target
+/**/**/**/target
+**/*.rs.bk
+**/**/**/node_modules
+**/**/**/test-ledger
+**/dist/
+.yarn
+Cargo.lock
+
