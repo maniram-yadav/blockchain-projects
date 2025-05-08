@@ -1,0 +1,6 @@
+anchor init  <program-name>
+anchro build
+anchor test
+solana-test-validator
+anchor test --skip-local-validator --skip-deploy
+cargo update -p proc-macro2 --precise 1.0.94
