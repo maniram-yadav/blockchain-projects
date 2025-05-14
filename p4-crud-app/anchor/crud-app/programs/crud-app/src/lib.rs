@@ -20,7 +20,24 @@ pub mod crud_app {
         Ok(())
     }
 
-    
+     pub fn update_journal_entry(ctx: Context<CreateEntry>,
+    title : String,
+    message : String) -> Result<()> {
+        msg!("Updatting Journal Entry with following details");
+        msg!("Title : {}",title);
+        msg!("Message : {}",message);
+        
+        let journal_entry = &mut ctx.accounts.journal_entry;
+        journal_entry.title = title;
+        journal_entry.message = message;
+        Ok(())
+    }
+
+    pub fn delete_journal_entry(_ctx: Context<DeleteEntry>, title: String) -> Result<()> {
+        msg!("Journal entry titled {} deleted", title);
+        Ok(())    
+    }
+
 }
 
 #[derive(Accounts)]
