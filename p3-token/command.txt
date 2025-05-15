@@ -1,0 +1,24 @@
+#create mint authority
+solana-keygen grind --starts-with bos:1
+solana config set --keypair bos69y2H1c6MhEtJgWjN29uVEKnqwCiNkzLfFTYtQ68.json
+solana config set --url devnet
+solana config get
+solana address
+solana balance
+
+solana airdrop 1 bos69y2H1c6MhEtJgWjN29uVEKnqwCiNkzLfFTYtQ68 --url https://api.devnet.solana.com
+
+# create mint token
+solana-keygen grind --starts-with mnt:1
+
+# Creating the token mint account
+spl-token create-token --program-id TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb --enable-metadata mntGvA2ERDVqT3N73iVQNH91aHfERKqPTFj2i6VmnC2.json
+
+# Add the metadata to the token
+spl-token initialize-metadata mntGvA2ERDVqT3N73iVQNH91aHfERKqPTFj2i6VmnC2 'Example token' 'EXMPL' https://raw.githubusercontent.com/solana-developers/opos-asset/main/assets/CompressedCoil/metadata.json
+
+spl-token create-account mntGvA2ERDVqT3N73iVQNH91aHfERKqPTFj2i6VmnC2
+spl-token mint mntGvA2ERDVqT3N73iVQNH91aHfERKqPTFj2i6VmnC2 100
+
+# Mint tokens
+spl-token transfer mntGvA2ERDVqT3N73iVQNH91aHfERKqPTFj2i6VmnC2 10 (recipient wallet address) --fund-recipient
