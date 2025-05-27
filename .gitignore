@@ -6,6 +6,7 @@
 **/*.rs.bk
 **/**/**/node_modules
 **/**/**/test-ledger
+**/**/**/build-info
 **/dist/
 .yarn
 Cargo.lock
